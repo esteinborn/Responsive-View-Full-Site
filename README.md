@@ -6,8 +6,7 @@ Sample code to illustrate how to implement the responsive "view full site" optio
 Demo: [Responsive View Full Site Demo](http://creativeandcode.com/demos/responsive-view-full-site-update/)
 
 ### Requirements
-- jQuery 1.7+
-- Modernizr
+- None
 
 ### Usage
 1. Add the following code where you'd like your view buttons to be:
@@ -20,8 +19,7 @@ Demo: [Responsive View Full Site Demo](http://creativeandcode.com/demos/responsi
 2. Place the contents of `rwd-display.css` in your stylesheet. 
 3. Include the `rwd-display.js` file *after* jQuery.
 
-Feel free to change the button text!
-
+Feel free to change the button text! Be sure to change the text in the JavaScript as well.
 
 ### Support
 You can read about what browsers and devices support this technique here: [http://www.quirksmode.org/mobile/tableViewport.html?#link4](http://www.quirksmode.org/mobile/tableViewport.html?#link4)

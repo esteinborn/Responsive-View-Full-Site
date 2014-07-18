@@ -1,37 +1,48 @@
-// viewport stuff
-var targetWidth = 980;
-var deviceWidth = 'device-width';
-var viewport = $('meta[name="viewport"]');
+var targetWidth = 980,
+  deviceWidth = 'device-width',
+  viewport = document.querySelector("meta[name='viewport']"),
+  rwdButton = document.querySelector('.rwd-display-options'),
+  viewMode = document.getElementById('view-mode'),
+  localStorage = {
+    isResponsive : false
+  },
+  hasLocalStorage = function() {
+    try {
+      localStorage.setItem('a', 'a');
+      localStorage.removeItem('a');
+      return true;
+    } catch(e) {
+      return false;
+    }
+  },
+  showFullSite = function(){
+      viewport.setAttribute('content', 'width=' + targetWidth);
+
+      viewMode.innerHTML = 'Mobile Optimized Site';
+
+      localStorage.isResponsive = false;
+  },
+  showMobileOptimized = function(){
+      localStorage.isResponsive = 'true';
+      viewport.setAttribute('content', 'width=' + deviceWidth);
+      viewMode.innerHTML = 'Full Site';
+
+  };
 
 // check to see if local storage value is set on page load
-localStorage.isResponsive = (localStorage.isResponsive == undefined) ? 'true' : localStorage.isResponsive;
-
-var showFullSite = function(){    
-    viewport.attr('content', 'width=' + targetWidth);  
-    
-    if(!$('.rwd-display-options #view-responsive').length){
-        $('.rwd-display-options').append('<span id="view-responsive">View Mobile Optimized</span>');
-    }    
-    
-    localStorage.isResponsive = 'false';
-}
-
-var showMobileOptimized = function(){
-    localStorage.isResponsive = 'true';
-    viewport.attr('content', 'width=' + deviceWidth);
-}
+localStorage.isResponsive = (localStorage.isResponsive === undefined) ? 'true' : localStorage.isResponsive;
 
 // if the user previously chose to view full site, change the viewport
-if(Modernizr.localstorage){
+if(hasLocalStorage){
     if(localStorage.isResponsive == 'false'){
         showFullSite();
     }
-}    
+}
 
-$("#view-full").on("click", function(){
-    showFullSite();
-});
-
-$('.rwd-display-options').on("click", "#view-responsive", function(){
-    showMobileOptimized();
-});
+rwdButton.addEventListener('click', function(){
+    if (viewMode.innerHTML === 'Full Site') {
+      showFullSite();
+    } else {
+      showMobileOptimized();
+    }
+}, false);

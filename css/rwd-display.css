@@ -1,12 +1,9 @@
-/* CSS for View Full Site */
-.rwd-display-options{ text-align: center; }
-.rwd-display-option{ cursor: pointer; }
+  /* CSS for View Full Site */
+  .rwd-display-options {
+    text-align: center;
+    cursor: pointer;
+  }
 
-#view-responsive{ display: none; }
-
-@media only screen and (min-width: 900px){
-    #view-full{ display: none; }
-    #view-responsive{ display: inline; }
-}
-
-
+  @media only screen and (min-width: 900px){
+      .rwd-display-options { display: none; }
+  }
